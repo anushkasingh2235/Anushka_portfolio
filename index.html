@@ -342,6 +342,7 @@
 
   /* PROJECTS */
   .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .project-card.full-width { grid-column: 1 / -1; max-width: 640px; margin: 0 auto; width: 100%; }
   .project-card {
     background: var(--card); border: 1px solid var(--border);
     border-radius: 14px; padding: 24px; position: relative;
@@ -352,6 +353,8 @@
   .project-card.accent-purple { border-top: 2px solid var(--purple); }
   .project-card.accent-green { border-top: 2px solid var(--green); }
   .project-card.accent-orange { border-top: 2px solid var(--orange); }
+  .project-card.accent-pink { border-top: 2px solid var(--pink); }
+  .project-sub.pink { color: var(--pink); }
   .project-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
   .project-icon { font-size: 1.6rem; margin-bottom: 8px; }
   .project-title { font-size: 1rem; font-weight: 700; }
@@ -778,6 +781,41 @@
         <span class="tech-tag">JavaScript</span><span class="tech-tag">Bootstrap</span><span class="tech-tag">SQLite</span>
       </div>
     </div>
+
+    <!-- Nano Link -->
+    <div class="project-card accent-pink full-width fade-in">
+      <div class="project-icon">🔗</div>
+      <div class="project-header">
+        <div>
+          <div class="project-title">Nano Link</div>
+          <div class="project-sub pink">Full-Stack URL Shortener & Real-Time Analytics Platform</div>
+        </div>
+        <div class="project-links">
+          <a href="#" class="project-link">⌘</a>
+          <a href="#" class="project-link">↗</a>
+        </div>
+      </div>
+      <div class="project-desc">Highly responsive full-stack URL shortening platform with JWT-based local authentication and comprehensive real-time click tracking across devices, browsers, and referrers. Features a custom multi-stage build system using Vite & Esbuild bundling the Express TypeScript backend into a single CJS module, double-layered Bcrypt.js encryption for secure session management, and stunning dynamic data visualizations using Recharts and Motion animations mapping geo-location, device distribution, and hourly link traffic trends.</div>
+      <div class="project-metrics">
+        <span class="metric green">40% faster cold starts</span>
+        <span class="metric cyan">100% secure sessions</span>
+        <span class="metric pink">35% more analytics engagement</span>
+        <span class="metric purple">Type-safe CJS build</span>
+      </div>
+      <div class="project-tags">
+        <span class="tech-tag">React</span>
+        <span class="tech-tag">TypeScript</span>
+        <span class="tech-tag">Node.js</span>
+        <span class="tech-tag">Express</span>
+        <span class="tech-tag">Tailwind CSS</span>
+        <span class="tech-tag">Vite</span>
+        <span class="tech-tag">Esbuild</span>
+        <span class="tech-tag">JWT</span>
+        <span class="tech-tag">Bcrypt.js</span>
+        <span class="tech-tag">Recharts</span>
+      </div>
+    </div>
+
   </div>
 </section>
 
