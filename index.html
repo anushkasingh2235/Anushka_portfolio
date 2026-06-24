@@ -3,7 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Anushka Singh | Full Stack & AI Engineer</title>
+<title>Anushka Singh — Portfolio</title>
+<meta name="description" content="Anushka Singh — CS undergraduate building production-grade full-stack apps, LLM evaluation pipelines, and QA automation. 5 deployed projects spanning React, Django, FastAPI, LangChain, and Groq LLM.">
+<meta name="author" content="Anushka Singh">
+<link rel="canonical" href="https://anushkasingh.vercel.app/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Anushka Singh | Full-Stack & AI Engineer">
+<meta property="og:description" content="CS undergraduate building production-grade full-stack apps, LLM evaluation pipelines, and QA automation across 5 deployed projects.">
+<meta property="og:url" content="https://anushkasingh.vercel.app/">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Anushka Singh | Full-Stack & AI Engineer">
+<meta name="twitter:description" content="CS undergraduate building production-grade full-stack apps, LLM evaluation pipelines, and QA automation across 5 deployed projects.">
+
+<!-- Favicon (inline SVG, no extra file needed) -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2307070f'/%3E%3Ctext x='50' y='68' font-size='58' font-family='Arial,sans-serif' font-weight='800' fill='%2322d3ee' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -24,8 +42,8 @@
     --glow-purple: rgba(167,139,250,0.15);
   }
   html { scroll-behavior: smooth; }
-  /* Hide default cursor */
-  *, a, button { cursor: none !important; }
+  /* Hide default cursor on ALL elements */
+  * { cursor: none !important; }
   body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
   /* ===== CUSTOM CURSOR ===== */
@@ -145,11 +163,13 @@
     animation: fadeUp 0.6s ease both;
   }
   .hero-name-1 {
+    display: block;
     font-size: clamp(4rem, 12vw, 9rem); font-weight: 900; line-height: 0.9;
     color: #fff; letter-spacing: -3px;
     animation: fadeUp 0.6s ease 0.1s both;
   }
   .hero-name-2 {
+    display: block;
     font-size: clamp(4rem, 12vw, 9rem); font-weight: 900; line-height: 0.95;
     background: linear-gradient(135deg, var(--cyan) 0%, var(--purple) 100%);
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
@@ -157,6 +177,7 @@
     animation: fadeUp 0.6s ease 0.2s both;
   }
   .hero-typing {
+    display: block;
     font-size: 1.1rem; color: rgba(255,255,255,0.7); height: 32px;
     margin-bottom: 24px; animation: fadeUp 0.6s ease 0.3s both;
   }
@@ -364,6 +385,17 @@
   .project-sub.green { color: var(--green); }
   .project-sub.orange { color: var(--orange); }
   .project-desc { font-size: 0.83rem; color: rgba(255,255,255,0.65); line-height: 1.65; margin-bottom: 16px; }
+  .project-problem {
+    font-size: 0.78rem; color: rgba(255,255,255,0.85); line-height: 1.6;
+    margin-bottom: 8px; padding-left: 14px; border-left: 2px solid rgba(255,255,255,0.15);
+    font-style: italic;
+  }
+  .project-problem b { font-style: normal; color: #fff; font-weight: 600; }
+  .project-approach {
+    font-size: 0.78rem; color: rgba(255,255,255,0.65); line-height: 1.6;
+    margin-bottom: 12px; padding-left: 14px; border-left: 2px solid var(--cyan);
+  }
+  .project-approach b { color: var(--cyan); font-weight: 600; }
   .project-metrics { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
   .metric { font-size: 0.7rem; padding: 3px 10px; border-radius: 999px; font-weight: 500; }
   .metric.green { background: rgba(16,185,129,0.2); color: var(--green); }
@@ -444,14 +476,65 @@
   .fade-in:nth-child(5) { transition-delay: 0.32s; }
   .fade-in:nth-child(6) { transition-delay: 0.40s; }
 
+  /* HAMBURGER MENU */
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 32px; height: 32px;
+    background: transparent; border: none;
+    z-index: 210;
+  }
+  .nav-toggle span {
+    display: block; width: 100%; height: 2px;
+    background: var(--text); border-radius: 2px;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+  .nav-toggle.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle.active span:nth-child(2) { opacity: 0; }
+  .nav-toggle.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .mobile-menu {
+    position: fixed; top: 0; right: 0;
+    width: min(78vw, 320px); height: 100vh;
+    background: rgba(10,10,20,0.97); backdrop-filter: blur(20px);
+    border-left: 1px solid var(--border);
+    z-index: 205;
+    display: flex; flex-direction: column;
+    padding: 100px 36px 40px;
+    gap: 28px;
+    transform: translateX(100%);
+    transition: transform 0.35s ease;
+  }
+  .mobile-menu.open { transform: translateX(0); }
+  .mobile-menu a {
+    font-size: 1rem; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--text); text-decoration: none;
+  }
+  .mobile-menu .mobile-socials { display: flex; gap: 20px; margin-top: 12px; }
+  .mobile-menu .mobile-socials a { font-size: 0.85rem; color: var(--muted); }
+  .nav-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+    z-index: 204; opacity: 0; pointer-events: none; transition: opacity 0.3s;
+  }
+  .nav-overlay.open { opacity: 1; pointer-events: auto; }
+
   @media (max-width: 768px) {
     nav { padding: 16px 20px; }
     .nav-links { display: none; }
+    .nav-socials { display: none; }
+    .nav-toggle { display: flex; }
     section, #skills-section, #contact { padding: 70px 20px; }
     .about-cards, .skills-grid, .projects-grid, .certs-grid, .contact-cards { grid-template-columns: 1fr; }
     .contact-card.full { grid-column: 1; }
     .about-main { flex-direction: column; }
     footer { flex-direction: column; gap: 12px; text-align: center; }
+    .hero-ctas { flex-direction: column; gap: 14px; }
+    .hero-ctas .cta-divider { display: none; }
+    .btn-primary, .btn-secondary { width: 100%; justify-content: center; text-align: center; }
+    .orbit-canvas { transform: scale(0.62); }
+    #skills { overflow-x: hidden; }
   }
 </style>
 </head>
@@ -476,10 +559,26 @@
     <a href="#contact">Contact</a>
   </div>
   <div class="nav-socials">
-    <a href="https://github.com/anushkasingh2235" target="_blank">GitHub</a>
-    <a href="https://www.linkedin.com/in/anushka-singh22" target="_blank">LinkedIn</a>
+    <a href="https://github.com/anushkasingh2235" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://www.linkedin.com/in/anushka-singh22" target="_blank" rel="noopener">LinkedIn</a>
   </div>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<div class="nav-overlay" id="nav-overlay"></div>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#about">About</a>
+  <a href="#skills">Skills</a>
+  <a href="#experience">Experience</a>
+  <a href="#projects">Projects</a>
+  <a href="#contact">Contact</a>
+  <div class="mobile-socials">
+    <a href="https://github.com/anushkasingh2235" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://www.linkedin.com/in/anushka-singh22" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</div>
 
 <!-- HERO -->
 <section id="hero">
@@ -491,16 +590,18 @@
   <span class="hero-bg-code">pytest test_api.py --coverage</span>
 
   <div class="hero-content">
-    <div class="hero-badge">✦ FULL STACK DEVELOPER · DELHI · INDIA ✦</div>
-    <div class="hero-name-1">ANUSHKA</div>
-    <div class="hero-name-2">SINGH</div>
-    <div class="hero-typing" id="typing-text"><span id="typing-display"></span><span class="cursor"></span></div>
+    <div class="hero-badge">✦ ANUSHKA SINGH · DELHI · INDIA ✦</div>
+    <h1 style="margin:0;font-weight:inherit;">
+      <span class="hero-name-1">ANUSHKA</span>
+      <span class="hero-name-2">SINGH</span>
+    </h1>
+    <p class="hero-typing" id="typing-text" style="margin:0;"><span id="typing-display"></span><span class="cursor"></span></p>
     <div class="hero-pills">
       <span class="pill">Python</span><span class="pill">React</span><span class="pill">Django</span>
       <span class="pill">FastAPI</span><span class="pill">LangChain</span><span class="pill">LangGraph</span>
       <span class="pill">Groq LLM</span><span class="pill">AWS</span><span class="pill">Postman</span><span class="pill">TypeScript</span>
     </div>
-    <p class="hero-bio">Computer Science student engineering intelligent systems at the intersection of full-stack development, LLM evaluation, and cloud automation. Building tools that reduce hallucinations, accelerate workflows, and ship with confidence.</p>
+    <p class="hero-bio">CS undergraduate at AKTU delivering production-grade full-stack apps, LLM evaluation pipelines, and QA automation across 2 internships and 5 deployed projects. Reduced hallucination rates by 40%, cut defect rates by 50%, and shipped JWT-secured platforms with measurable performance wins.</p>
     <div class="hero-ctas">
       <a href="#projects" class="btn-primary">VIEW PROJECTS →</a>
       <div class="cta-divider"></div>
@@ -512,7 +613,7 @@
 <!-- ABOUT -->
 <section id="about">
   <div class="section-label">// 01. ABOUT ME</div>
-  <div class="section-title">Who I Am</div>
+  <h2 class="section-title">Who I Am</h2>
   <div class="gradient-line"></div>
 
   <div class="card fade-in" style="margin-bottom:24px">
@@ -521,7 +622,7 @@
       <div>
         <div class="about-name">Anushka Singh</div>
         <div class="about-sub">BTech CSE · Dr. A.P.J. Abdul Kalam Technical University (AKTU) · Class of 2027 · Delhi/NCR, India</div>
-        <div class="about-bio">Computer Science undergraduate at AKTU building at the intersection of AI engineering and full-stack development. I specialize in LLM evaluation, hallucination reduction, and multi-agent system design — while shipping production-grade web applications with React, Django, and FastAPI. I believe software quality is a feature, not an afterthought.</div>
+        <div class="about-bio">Computer Science undergraduate at AKTU (2027) specializing in full-stack development, LLM evaluation, and QA automation. I've shipped 5 production-deployed applications across React, Django, FastAPI, and Node.js — integrating LangChain, LangGraph, and Groq LLM — while delivering structured test plans, regression suites, and API validation across 2 Agile internships. I believe software quality is a feature, not an afterthought.</div>
       </div>
     </div>
   </div>
@@ -548,7 +649,7 @@
 <!-- SKILLS -->
 <section id="skills" style="max-width:1280px;margin:0 auto;">
   <div class="section-label">// 02. TECHNICAL SKILLS</div>
-  <div class="section-title">Skill Universe</div>
+  <h2 class="section-title">Skill Universe</h2>
 
   <div class="skills-grid">
     <!-- Orbital -->
@@ -586,9 +687,9 @@
       <div class="skill-cat">
         <div class="skill-cat-title"><span style="color:var(--cyan)">●</span> <span style="color:var(--cyan)">LANGUAGES</span></div>
         <div class="skill-tags">
-          <span class="skill-tag">Python</span><span class="skill-tag">JavaScript</span><span class="skill-tag">TypeScript</span>
+          <span class="skill-tag">Python</span><span class="skill-tag">JavaScript (ES6+)</span><span class="skill-tag">TypeScript</span>
           <span class="skill-tag">Java</span><span class="skill-tag">C</span><span class="skill-tag">C++</span>
-          <span class="skill-tag">HTML5/CSS3</span><span class="skill-tag">SQL</span>
+          <span class="skill-tag">HTML5</span><span class="skill-tag">CSS3</span><span class="skill-tag">SQL</span>
         </div>
       </div>
       <div class="skill-cat">
@@ -597,40 +698,47 @@
           <span class="skill-tag">LLM Evaluation</span><span class="skill-tag">Prompt Engineering</span>
           <span class="skill-tag">LangChain</span><span class="skill-tag">LangGraph</span>
           <span class="skill-tag">Groq LLM</span><span class="skill-tag">Gemini API</span>
-          <span class="skill-tag">RAG Pipelines</span><span class="skill-tag">NLP</span>
-          <span class="skill-tag">RLHF</span><span class="skill-tag">Hallucination Detection</span>
+          <span class="skill-tag">RAG Pipelines</span><span class="skill-tag">Multi-Agent Systems</span>
+          <span class="skill-tag">NLP</span><span class="skill-tag">RLHF</span>
+          <span class="skill-tag">Hallucination Detection</span><span class="skill-tag">Data Annotation</span>
         </div>
       </div>
       <div class="skill-cat">
         <div class="skill-cat-title"><span style="color:var(--green)">●</span> <span style="color:var(--green)">FULL STACK / BACKEND</span></div>
         <div class="skill-tags">
           <span class="skill-tag">Django</span><span class="skill-tag">FastAPI</span><span class="skill-tag">Flask</span>
-          <span class="skill-tag">Node.js</span><span class="skill-tag">REST APIs</span>
-          <span class="skill-tag">SQLite</span><span class="skill-tag">MySQL</span><span class="skill-tag">MongoDB</span>
+          <span class="skill-tag">Node.js</span><span class="skill-tag">Express.js</span>
+          <span class="skill-tag">REST APIs</span><span class="skill-tag">JWT Auth</span><span class="skill-tag">Bcrypt.js</span>
+          <span class="skill-tag">Django ORM</span><span class="skill-tag">SQLite</span><span class="skill-tag">MySQL</span><span class="skill-tag">MongoDB</span>
         </div>
       </div>
       <div class="skill-cat">
         <div class="skill-cat-title"><span style="color:var(--pink)">●</span> <span style="color:var(--pink)">FRONTEND</span></div>
         <div class="skill-tags">
-          <span class="skill-tag">React.js</span><span class="skill-tag">TypeScript</span>
+          <span class="skill-tag">React 19</span><span class="skill-tag">TypeScript</span>
           <span class="skill-tag">Tailwind CSS</span><span class="skill-tag">Bootstrap</span>
-          <span class="skill-tag">CSS Grid</span><span class="skill-tag">Recharts</span>
+          <span class="skill-tag">Flexbox</span><span class="skill-tag">CSS Grid</span>
+          <span class="skill-tag">Recharts</span><span class="skill-tag">Vite</span><span class="skill-tag">Esbuild</span>
         </div>
       </div>
       <div class="skill-cat">
         <div class="skill-cat-title"><span style="color:var(--orange)">●</span> <span style="color:var(--orange)">TESTING & QA</span></div>
         <div class="skill-tags">
-          <span class="skill-tag">Manual Testing</span><span class="skill-tag">API Testing</span>
-          <span class="skill-tag">Postman</span><span class="skill-tag">Regression Testing</span>
-          <span class="skill-tag">Bug Tracking</span><span class="skill-tag">Functional QA</span>
+          <span class="skill-tag">Manual Testing</span><span class="skill-tag">Test Case Design</span>
+          <span class="skill-tag">Test Planning</span><span class="skill-tag">API Testing (Postman)</span>
+          <span class="skill-tag">Regression Testing</span><span class="skill-tag">Smoke Testing</span>
+          <span class="skill-tag">Sanity Testing</span><span class="skill-tag">UAT</span>
+          <span class="skill-tag">Bug Tracking</span><span class="skill-tag">Defect Lifecycle</span>
+          <span class="skill-tag">Cross-Browser Testing</span><span class="skill-tag">STLC</span>
         </div>
       </div>
       <div class="skill-cat">
         <div class="skill-cat-title"><span style="color:#9ca3af">●</span> <span style="color:#9ca3af">TOOLS & CLOUD</span></div>
         <div class="skill-tags">
-          <span class="skill-tag">AWS</span><span class="skill-tag">Git/GitHub</span>
-          <span class="skill-tag">Docker</span><span class="skill-tag">Vercel</span>
-          <span class="skill-tag">CI/CD</span><span class="skill-tag">Agile/Scrum</span>
+          <span class="skill-tag">AWS (EC2, S3, IAM, RDS)</span><span class="skill-tag">Git/GitHub</span>
+          <span class="skill-tag">Docker</span><span class="skill-tag">Vercel</span><span class="skill-tag">Render</span>
+          <span class="skill-tag">Postman</span><span class="skill-tag">CI/CD</span>
+          <span class="skill-tag">Agile/Scrum</span><span class="skill-tag">SDLC</span>
         </div>
       </div>
     </div>
@@ -640,7 +748,7 @@
 <!-- EXPERIENCE -->
 <section id="experience">
   <div class="section-label">// 03. EXPERIENCE</div>
-  <div class="section-title">Professional Journey</div>
+  <h2 class="section-title">Professional Journey</h2>
 
   <div class="timeline">
     <div class="timeline-entry fade-in">
@@ -652,9 +760,9 @@
         </div>
         <div class="exp-company" style="color:var(--cyan)">Infosys Springboard</div>
         <ul class="exp-bullets">
-          <li>Performed structured LLM output evaluation — scoring responses for accuracy, coherence, and factual correctness — generating labeled feedback for model training pipelines.</li>
-          <li>Built the Autonomous Cognitive Engine using LangGraph + LLM APIs, cutting manual research effort by 70% through multi-agent orchestration and iterative testing.</li>
-          <li>Designed regression testing framework for LLM pipelines, improving task success rate by 2× and reducing hallucination rate by 40%.</li>
+          <li>Authored structured test plans and test cases covering functional, edge case, and regression scenarios across 3 sprint cycles — meeting every delivery deadline.</li>
+          <li>Built the Autonomous Cognitive Engine using LangGraph + LLM APIs, reducing manual research effort by 70% through multi-agent task automation and iterative testing.</li>
+          <li>Designed regression test suite for LLM pipeline, improving task success rate by 2× and reducing hallucination rate by 40% across evaluation runs.</li>
         </ul>
       </div>
     </div>
@@ -668,9 +776,9 @@
         </div>
         <div class="exp-company" style="color:var(--purple)">Next Gen Employability Program</div>
         <ul class="exp-bullets">
-          <li>Completed 6-month intensive Full Stack program covering Django, JavaScript, REST APIs, and SQLite — with continuous API endpoint validation throughout.</li>
-          <li>Built Smart Agriculture Portal with real-time weather and mandi price modules; executed manual test cases reducing production defects by 70%.</li>
-          <li>Tracked and resolved critical bugs in authentication and API layers, improving system efficiency by 80% and cutting response latency by 60%.</li>
+          <li>Completed 6-month full-stack training using Django, JavaScript, REST APIs, and SQLite; validated 20+ API endpoints throughout development using Postman.</li>
+          <li>Built Smart Agriculture Portal and executed manual test cases for weather and mandi price modules, reducing production defects by 30% before release.</li>
+          <li>Tracked and resolved bugs in authentication and REST API layers using structured defect reporting, improving response reliability and cutting average latency by 35%.</li>
         </ul>
       </div>
     </div>
@@ -680,7 +788,7 @@
 <!-- PROJECTS -->
 <section id="projects">
   <div class="section-label">// 04. PROJECTS</div>
-  <div class="section-title">Featured Work</div>
+  <h2 class="section-title">Featured Work</h2>
 
   <div class="projects-grid">
     <!-- AutoDoc AI -->
@@ -692,15 +800,17 @@
           <div class="project-sub cyan">Repository Intelligence & Documentation Engine</div>
         </div>
         <div class="project-links">
-          <a href="#" class="project-link">⌘</a>
-          <a href="#" class="project-link">↗</a>
+          <a href="https://github.com/anushkasingh2235/AutoDoc-AI" target="_blank" rel="noopener" class="project-link" aria-label="View source on GitHub" title="View source on GitHub">⌘</a>
+          <a href="https://auto-doc-ai-sepia.vercel.app/" target="_blank" rel="noopener" class="project-link" aria-label="View live demo" title="View live demo">↗</a>
         </div>
       </div>
-      <div class="project-desc">AI-powered documentation engine that ingests entire codebases, generates semantic dependency graphs, and produces real-time security audit reports — serving 50+ repositories with Gemini API-driven multi-file parsing and live codebase chat.</div>
+      <div class="project-problem"><b>The problem:</b> Developers lose hours manually mapping unfamiliar codebases before they can safely ship a change.</div>
+      <div class="project-approach"><b>The approach:</b> Chose Gemini for multi-file context windows large enough to reason across an entire repo at once, then layered a dedicated QA pass to catch hallucinated file references before they reached the report.</div>
+      <div class="project-desc">AI-powered documentation engine that ingests entire codebases, generates semantic dependency graphs, and produces real-time security audit reports via Gemini API. Validated with 40+ manual and API test cases covering functional, regression, and UAT scenarios — with cross-browser compatibility verified across Chrome, Firefox, and Edge.</div>
       <div class="project-metrics">
         <span class="metric green">50% fewer post-deploy bugs</span>
-        <span class="metric cyan">50+ repos served</span>
-        <span class="metric purple">40+ test cases</span>
+        <span class="metric cyan">40+ test cases</span>
+        <span class="metric purple">3-browser verified</span>
       </div>
       <div class="project-tags">
         <span class="tech-tag">React 19</span><span class="tech-tag">TypeScript</span>
@@ -717,18 +827,20 @@
           <div class="project-sub purple">Automated Cloud-Native Code Auditor</div>
         </div>
         <div class="project-links">
-          <a href="#" class="project-link">⌘</a>
-          <a href="#" class="project-link">↗</a>
+          <a href="https://github.com/anushkasingh2235/DevScope_AI" target="_blank" rel="noopener" class="project-link" aria-label="View source on GitHub" title="View source on GitHub">⌘</a>
+          <a href="https://devscopeai.vercel.app" target="_blank" rel="noopener" class="project-link" aria-label="View live demo" title="View live demo">↗</a>
         </div>
       </div>
-      <div class="project-desc">Cloud-native code intelligence platform with instant Big-O complexity scoring, security vulnerability detection, and persistent technical debt tracking — powered by Groq's LPU inference engine with 500ms response latency.</div>
+      <div class="project-problem"><b>The problem:</b> Code review backlogs grow faster than reviewer bandwidth, letting complexity and security issues slip through.</div>
+      <div class="project-approach"><b>The approach:</b> Picked Groq's LPU inference for sub-500ms scoring so the audit feels instant inside a reviewer's workflow, then persisted every run to SQLite to track technical debt trends over time instead of one-off snapshots.</div>
+      <div class="project-desc">Cloud-native code intelligence platform with instant Big-O complexity scoring, security vulnerability detection, and persistent technical debt tracking — powered by Groq's LPU inference engine. Validated via Postman across 15+ endpoints with a TypeScript-typed React component library of 10+ reusable components.</div>
       <div class="project-metrics">
-        <span class="metric green">65% less review time</span>
+        <span class="metric green">40% less review time</span>
         <span class="metric cyan">500ms AI latency</span>
-        <span class="metric pink">90%+ workflow speedup</span>
+        <span class="metric pink">30% fewer QA defects</span>
       </div>
       <div class="project-tags">
-        <span class="tech-tag">React</span><span class="tech-tag">FastAPI</span>
+        <span class="tech-tag">React</span><span class="tech-tag">TypeScript</span><span class="tech-tag">FastAPI</span>
         <span class="tech-tag">Groq LLM</span><span class="tech-tag">SQLite</span><span class="tech-tag">Recharts</span>
       </div>
     </div>
@@ -742,9 +854,12 @@
           <div class="project-sub green">Multi-Agent LLM Research Orchestrator</div>
         </div>
         <div class="project-links">
-          <a href="#" class="project-link">⌘</a>
+          <a href="https://github.com/anushkasingh2235/Autonomous-cognitive-engine" target="_blank" rel="noopener" class="project-link" aria-label="View source on GitHub" title="View source on GitHub">⌘</a>
+          <a href="https://autonomous-cognitive-engine.vercel.app/" target="_blank" rel="noopener" class="project-link" aria-label="View live demo" title="View live demo">↗</a>
         </div>
       </div>
+      <div class="project-problem"><b>The problem:</b> Long-horizon research tasks overwhelm a single LLM call — context gets lost and hallucinations compound over multi-step reasoning.</div>
+      <div class="project-approach"><b>The approach:</b> Used LangGraph to split the task into a planner agent and specialized sub-agents with shared memory, so each step only reasons about its own slice instead of carrying the entire task history forward.</div>
       <div class="project-desc">Self-directed multi-agent system for long-horizon research tasks — decomposes complex queries into sub-agent planning loops, maintains context memory across sessions, and generates structured reports with 40% fewer hallucinations.</div>
       <div class="project-metrics">
         <span class="metric green">70% less manual effort</span>
@@ -766,15 +881,17 @@
           <div class="project-sub orange">Real-Time Agri Intelligence Dashboard</div>
         </div>
         <div class="project-links">
-          <a href="#" class="project-link">⌘</a>
-          <a href="#" class="project-link">↗</a>
+          <a href="https://github.com/anushkasingh2235/Smart-Agri" target="_blank" rel="noopener" class="project-link" aria-label="View source on GitHub" title="View source on GitHub">⌘</a>
+          <a href="https://smart-agri.vercel.app" target="_blank" rel="noopener" class="project-link" aria-label="View live demo" title="View live demo">↗</a>
         </div>
       </div>
-      <div class="project-desc">Full-stack agricultural intelligence portal delivering live weather forecasts and real-time mandi price data to farmers — built with Django backend, Bootstrap responsive UI, and JavaScript-driven dynamic modules.</div>
+      <div class="project-problem"><b>The problem:</b> Farmers need live weather and mandi (market) price data, but most regional tools aren't mobile-first or fast enough on low-end devices.</div>
+      <div class="project-approach"><b>The approach:</b> Built the UI mobile-first in Bootstrap from day one rather than retrofitting desktop layouts, and pushed data refresh to async JavaScript calls so the page never needed a full reload on a slow connection.</div>
+      <div class="project-desc">Mobile-first full-stack agricultural portal integrating 2 external REST APIs for live weather forecasts and real-time mandi price data. Built with Django ORM backend, Bootstrap responsive UI, and async JavaScript components — eliminating full-page reloads and verified across Chrome, Firefox, and Edge.</div>
       <div class="project-metrics">
-        <span class="metric green">70% fewer defects</span>
-        <span class="metric cyan">30% faster load</span>
-        <span class="metric orange">Mobile-first</span>
+        <span class="metric green">30% fewer defects</span>
+        <span class="metric cyan">30% faster data refresh</span>
+        <span class="metric orange">5+ screen sizes tested</span>
       </div>
       <div class="project-tags">
         <span class="tech-tag">Django</span><span class="tech-tag">HTML5/CSS3</span>
@@ -791,22 +908,24 @@
           <div class="project-sub pink">Full-Stack URL Shortener & Real-Time Analytics Platform</div>
         </div>
         <div class="project-links">
-          <a href="#" class="project-link">⌘</a>
-          <a href="#" class="project-link">↗</a>
+          <a href="https://github.com/anushkasingh2235/Nano-Link" target="_blank" rel="noopener" class="project-link" aria-label="View source on GitHub" title="View source on GitHub">⌘</a>
+          <a href="https://nano-link-ypnc.onrender.com" target="_blank" rel="noopener" class="project-link" aria-label="View live demo" title="View live demo">↗</a>
         </div>
       </div>
-      <div class="project-desc">Highly responsive full-stack URL shortening platform with JWT-based local authentication and comprehensive real-time click tracking across devices, browsers, and referrers. Features a custom multi-stage build system using Vite & Esbuild bundling the Express TypeScript backend into a single CJS module, double-layered Bcrypt.js encryption for secure session management, and stunning dynamic data visualizations using Recharts and Motion animations mapping geo-location, device distribution, and hourly link traffic trends.</div>
+      <div class="project-problem"><b>The problem:</b> Generic shorteners don't give users ownership — no custom aliases, no expiry control, no real analytics on who's actually clicking.</div>
+      <div class="project-approach"><b>The approach:</b> Designed a repository-pattern data layer so user-link relationships could cascade cleanly on delete, paired with a rotating JWT + Bcrypt.js auth pipeline to keep sessions secure without adding latency to every redirect.</div>
+      <div class="project-desc">Full-stack URL shortening platform with custom alias engine, link-expiration controls, and JWT + Bcrypt.js multi-layer authentication achieving sub-10ms server response times. Features Recharts dashboards for real-time hit tracking, geo-location, device breakdown, and referrer analytics — with a custom Vite & Esbuild multi-stage build bundling the Express TypeScript backend into a single CJS module.</div>
       <div class="project-metrics">
-        <span class="metric green">40% faster cold starts</span>
-        <span class="metric cyan">100% secure sessions</span>
-        <span class="metric pink">35% more analytics engagement</span>
-        <span class="metric purple">Type-safe CJS build</span>
+        <span class="metric green">50% faster cold starts</span>
+        <span class="metric cyan">sub-10ms response</span>
+        <span class="metric pink">100% secure sessions</span>
+        <span class="metric purple">35% analytics engagement↑</span>
       </div>
       <div class="project-tags">
-        <span class="tech-tag">React</span>
+        <span class="tech-tag">React 19</span>
         <span class="tech-tag">TypeScript</span>
         <span class="tech-tag">Node.js</span>
-        <span class="tech-tag">Express</span>
+        <span class="tech-tag">Express.js</span>
         <span class="tech-tag">Tailwind CSS</span>
         <span class="tech-tag">Vite</span>
         <span class="tech-tag">Esbuild</span>
@@ -822,7 +941,7 @@
 <!-- CERTIFICATIONS -->
 <section id="certifications">
   <div class="section-label">// 05. CERTIFICATIONS</div>
-  <div class="section-title">Credentials</div>
+  <h2 class="section-title">Credentials</h2>
 
   <div class="certs-grid">
     <div class="cert-card fade-in" style="border-top:2px solid var(--cyan)">
@@ -835,7 +954,7 @@
       <span class="cert-icon">☕</span>
       <div class="cert-title">Java Foundations</div>
       <div class="cert-org" style="color:var(--orange)">Oracle Academy</div>
-      <div class="cert-date">Sep 2026</div>
+      <div class="cert-date">2025</div>
     </div>
     <div class="cert-card fade-in" style="border-top:2px solid #facc15">
       <span class="cert-icon">☁️</span>
@@ -867,7 +986,7 @@
 <!-- CONTACT -->
 <section id="contact" style="text-align:center;max-width:800px">
   <div class="section-label" style="display:block;text-align:center">// 06. CONTACT</div>
-  <div class="section-title" style="font-size:clamp(2.4rem,6vw,4rem)">Let's Build Together</div>
+  <h2 class="section-title" style="font-size:clamp(2.4rem,6vw,4rem)">Let's Build Together</h2>
   <p class="contact-sub">Open to software engineering, AI/ML, and full-stack roles — as well as freelance projects and research collaborations. If you have an opening or an interesting problem — let's talk.</p>
 
   <div class="contact-cards">
@@ -878,14 +997,14 @@
         <div class="contact-val">anushkasingh9983@gmail.com</div>
       </div>
     </a>
-    <a href="https://github.com/anushkasingh2235" target="_blank" class="contact-card">
+    <a href="https://github.com/anushkasingh2235" target="_blank" rel="noopener" class="contact-card">
       <span class="contact-icon" style="color:var(--pink)">⌘</span>
       <div>
         <div class="contact-key">GITHUB</div>
         <div class="contact-val">anushkasingh2235</div>
       </div>
     </a>
-    <a href="https://www.linkedin.com/in/anushka-singh22" target="_blank" class="contact-card full">
+    <a href="https://www.linkedin.com/in/anushka-singh22" target="_blank" rel="noopener" class="contact-card full">
       <span class="contact-icon" style="color:var(--cyan)">🔗</span>
       <div>
         <div class="contact-key">LINKEDIN</div>
@@ -901,15 +1020,15 @@
   <div class="footer-logo"><span style="color:var(--cyan)">A</span>nushka<span style="color:var(--purple)">.</span></div>
   <div class="footer-copy">© 2026 Anushka Singh · Engineering What Matters</div>
   <div class="footer-links">
-    <a href="https://github.com/anushkasingh2235" target="_blank">⌘</a>
-    <a href="https://www.linkedin.com/in/anushka-singh22" target="_blank">🔗</a>
-    <a href="mailto:anushkasingh9983@gmail.com">✉</a>
+    <a href="https://github.com/anushkasingh2235" target="_blank" rel="noopener" aria-label="GitHub profile">⌘</a>
+    <a href="https://www.linkedin.com/in/anushka-singh22" target="_blank" rel="noopener" aria-label="LinkedIn profile">🔗</a>
+    <a href="mailto:anushkasingh9983@gmail.com" aria-label="Send email">✉</a>
   </div>
 </footer>
 
 <script>
 // TYPING ANIMATION
-const phrases = ["LLM Evaluator & AI Engineer", "Full Stack Developer", "QA & Automation Specialist", "Cloud-Native Builder"];
+const phrases = ["LLM Evaluator & AI Engineer", "Full Stack Developer", "QA & Automation Specialist", "Cloud-Native Builder", "React Developer", "URL Shortener Builder"];
 let pi = 0, ci = 0, deleting = false;
 const el = document.getElementById('typing-display');
 function type() {
@@ -956,25 +1075,34 @@ document.querySelectorAll('.fade-in').forEach(el => obs2.observe(el));
 // ORBITAL ANIMATION (CSS-based dots)
 const skills = [
   { name: 'Python', cat: 'lang', color: '#06b6d4', r: 50, dur: 9, delay: 0 },
-  { name: 'React', cat: 'frontend', color: '#f43f5e', r: 90, dur: 13, delay: -2 },
-  { name: 'LangChain', cat: 'ai', color: '#8b5cf6', r: 90, dur: 13, delay: -6 },
-  { name: 'Django', cat: 'backend', color: '#10b981', r: 130, dur: 17, delay: 0 },
-  { name: 'FastAPI', cat: 'backend', color: '#10b981', r: 130, dur: 17, delay: -5 },
   { name: 'TypeScript', cat: 'lang', color: '#06b6d4', r: 130, dur: 17, delay: -10 },
+  { name: 'JavaScript', cat: 'lang', color: '#06b6d4', r: 170, dur: 22, delay: -14 },
+  { name: 'React 19', cat: 'frontend', color: '#f43f5e', r: 90, dur: 13, delay: -2 },
+  { name: 'Tailwind', cat: 'frontend', color: '#f43f5e', r: 130, dur: 17, delay: -14 },
+  { name: 'Vite', cat: 'frontend', color: '#f43f5e', r: 90, dur: 13, delay: -11 },
+  { name: 'Recharts', cat: 'frontend', color: '#f43f5e', r: 170, dur: 22, delay: -9 },
+  { name: 'Esbuild', cat: 'tools', color: '#9ca3af', r: 130, dur: 17, delay: -3 },
+  { name: 'LangChain', cat: 'ai', color: '#8b5cf6', r: 90, dur: 13, delay: -6 },
   { name: 'LangGraph', cat: 'ai', color: '#8b5cf6', r: 50, dur: 9, delay: -4 },
   { name: 'Groq LLM', cat: 'ai', color: '#8b5cf6', r: 90, dur: 13, delay: -9 },
-  { name: 'Postman', cat: 'testing', color: '#f97316', r: 170, dur: 22, delay: 0 },
-  { name: 'AWS', cat: 'tools', color: '#9ca3af', r: 170, dur: 22, delay: -7 },
-  { name: 'JavaScript', cat: 'lang', color: '#06b6d4', r: 170, dur: 22, delay: -14 },
-  { name: 'Docker', cat: 'tools', color: '#9ca3af', r: 50, dur: 9, delay: -2 },
   { name: 'Gemini API', cat: 'ai', color: '#8b5cf6', r: 130, dur: 17, delay: -8 },
   { name: 'NLP', cat: 'ai', color: '#8b5cf6', r: 170, dur: 22, delay: -18 },
+  { name: 'RAG', cat: 'ai', color: '#8b5cf6', r: 170, dur: 22, delay: -3 },
+  { name: 'Django', cat: 'backend', color: '#10b981', r: 130, dur: 17, delay: 0 },
+  { name: 'FastAPI', cat: 'backend', color: '#10b981', r: 130, dur: 17, delay: -5 },
+  { name: 'Node.js', cat: 'backend', color: '#10b981', r: 170, dur: 22, delay: -4 },
+  { name: 'Express.js', cat: 'backend', color: '#10b981', r: 50, dur: 9, delay: -8 },
   { name: 'Flask', cat: 'backend', color: '#10b981', r: 90, dur: 13, delay: -4 },
-  { name: 'MongoDB', cat: 'backend', color: '#10b981', r: 170, dur: 22, delay: -11 },
-  { name: 'HTML5/CSS3', cat: 'frontend', color: '#f43f5e', r: 130, dur: 17, delay: -14 },
+  { name: 'JWT', cat: 'backend', color: '#10b981', r: 170, dur: 22, delay: -20 },
   { name: 'SQLite', cat: 'backend', color: '#10b981', r: 50, dur: 9, delay: -6 },
-  { name: 'Git', cat: 'tools', color: '#9ca3af', r: 90, dur: 13, delay: -11 },
+  { name: 'MongoDB', cat: 'backend', color: '#10b981', r: 170, dur: 22, delay: -11 },
+  { name: 'Postman', cat: 'testing', color: '#f97316', r: 170, dur: 22, delay: 0 },
   { name: 'Manual QA', cat: 'testing', color: '#f97316', r: 90, dur: 13, delay: -7 },
+  { name: 'STLC', cat: 'testing', color: '#f97316', r: 130, dur: 17, delay: -12 },
+  { name: 'AWS', cat: 'tools', color: '#9ca3af', r: 170, dur: 22, delay: -7 },
+  { name: 'Docker', cat: 'tools', color: '#9ca3af', r: 50, dur: 9, delay: -2 },
+  { name: 'Git', cat: 'tools', color: '#9ca3af', r: 90, dur: 13, delay: -11 },
+  { name: 'Render', cat: 'tools', color: '#9ca3af', r: 130, dur: 17, delay: -20 },
 ];
 
 const canvas = document.getElementById('orbit-canvas');
@@ -1041,7 +1169,7 @@ function animateCursor() {
 animateCursor();
 
 // Hover effect on interactive elements
-const hoverEls = document.querySelectorAll('a, button, .filter-btn, .project-card, .cert-card, .contact-card, .skill-tag, .pill');
+const hoverEls = document.querySelectorAll('a, button, .filter-btn, .project-card, .cert-card, .contact-card, .skill-tag, .pill, .nav-toggle');
 hoverEls.forEach(el => {
   el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
   el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
@@ -1059,6 +1187,34 @@ window.addEventListener('scroll', () => {
   cursorDot.style.background = cursorColors[colorIdx];
   cursorDot.style.boxShadow = `0 0 10px ${cursorColors[colorIdx]}, 0 0 25px ${cursorColors[colorIdx]}`;
 });
+
+// ===== MOBILE HAMBURGER MENU =====
+const navToggle = document.getElementById('nav-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
+const navOverlay = document.getElementById('nav-overlay');
+
+function closeMobileMenu() {
+  navToggle.classList.remove('active');
+  mobileMenu.classList.remove('open');
+  navOverlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+function toggleMobileMenu() {
+  const isOpen = mobileMenu.classList.contains('open');
+  if (isOpen) {
+    closeMobileMenu();
+  } else {
+    navToggle.classList.add('active');
+    mobileMenu.classList.add('open');
+    navOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+}
+navToggle.addEventListener('click', toggleMobileMenu);
+navOverlay.addEventListener('click', closeMobileMenu);
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobileMenu));
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMobileMenu(); });
+
 </script>
 </body>
 </html>
